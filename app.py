@@ -93,7 +93,20 @@ def create_user():
         q = "INSERT INTO users VALUES(%s, %s, %s)"
         cursor.execute(q, (user_pk, user_name, user_last_name))
         db.commit()
-        return jsonify({"id":user_pk}), 201
+
+        user = {
+            "user_pk" : user_pk,
+            "user_name" : user_name,
+            "user_last_name" : user_last_name
+        }
+
+        user_html = render_template("___user.html", user=user)
+
+        return f"""
+            <browser mix-after-begin="#users">
+                {user_html}
+            </browser>
+        """
     except Exception as ex:
         pass
     finally:

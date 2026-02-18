@@ -1,6 +1,6 @@
 {% include "_header.html" %}
     
-    <form>
+    <form mix-post="/users">
         <input name="user_name" type="text" placeholder="name">
         <input name="user_last_name" type="text" placeholder="last name">
         <button>
@@ -10,10 +10,13 @@
 
 
     <div id="users">
+        
     {% for user in users %}
         {% include "___user.html" %}
     {% endfor %}
+    
     </div>
+
 
 {% include "_footer.html" %}
 
