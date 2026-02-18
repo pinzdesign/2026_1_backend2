@@ -198,8 +198,8 @@ def delete_user(user_pk):
         if "db" in locals(): db.close()
 
 ##############################
-@app.patch("/items/<id>")
-def update_item(id):
+@app.patch("/users/<user_pk>")
+def update_user(user_pk):
     try:
 
         parts = []
@@ -221,7 +221,7 @@ def update_item(id):
         # Convert the list to a string with a comma in between
         partial_query = ", ".join(parts)
 
-        values.append(id)
+        values.append(user_pk)
 
         print(parts, flush=True)
         print(values, flush=True)
